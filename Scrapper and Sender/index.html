@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Yo me that</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+		var apiURL = 'https://16072a70-380c6e43a7db.my.apitools.com/';
+
+		$("#yoOneButton").click(function(){
+	    //pass the username typed in input field
+	    yoOne($("#yoUsername").val());
+		});
+
+		$("#yoAllButton").click(function(){
+	
+		});
+
+		var yoOne = function(yoUsername){
+	    var url = apiURL;
+	    url += "yo/";
+	    $.post(url, {username:yoUsername})
+	    .done(function( data ) {
+	      console.log(data);
+	    })
+	    .fail(function(xhr, textStatus, errorThrown) {
+	      console.log("Error",xhr.responseText);
+	    });
+		}
+
+		var yoAll =function(){
+	    var url = apiURL;
+	    url += "yoall/";
+
+	    $.post(url)
+	    .done(function( data ) {
+	      console.log(data);
+	    })
+	    .fail(function(xhr, textStatus, errorThrown) {
+	      console.log("Error",xhr.responseText);
+	    });
+		}
+	</script>
+</head>
+
+<body>
+	Yo username <input type="text" id ="yoUsername">
+	<button id="yoOneButton">Yo ONE</button>
+	<button id="yoAllButton">Yo ALL</button>
+</body>
+</html>
